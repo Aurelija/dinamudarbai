@@ -1,0 +1,7 @@
+di_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: DIBundle:Default:index }
+
+di_client:
+    path:     /client
+    defaults: { _controller: DIBundle:ApiClient:index }
