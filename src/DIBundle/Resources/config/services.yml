@@ -1,0 +1,27 @@
+#services:
+#    di.example:
+#        class: DIBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+services:
+  api_client:
+    class:  DIBundle\ApiClient
+
+  api_client_event:
+      class:  DIBundle\Event\ApiClientEvent
+
+
+  api.client.listener.success:
+    class: DIBundle\ApiClient
+    tags:
+      - { name: kernel.event_listener, event: api.client.success, method: onSuccess }
+
+  api.client.listener.failure:
+    class: DIBundle\ApiClient
+    tags:
+      - { name: kernel.event_listener, event: api.client.failure, method: onFailure }
+
+  api.client.listener.before:
+    class: DIBundle\ApiClient
+    tags:
+      - { name: kernel.event_listener, event: api.client.before, method: onBefore }
